@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_bloc_pattern/models/message_state.dart';
+
 import 'package:login_bloc_pattern/widgets/loading_screen.dart';
 
 class LoaddingPage extends StatefulWidget {
@@ -27,15 +28,11 @@ class _LoaddingPageState extends State<LoaddingPage> {
             ),
           ),
           loaderColor: Colors.white,
-          navigateToWidget: Scaffold(
-            appBar: AppBar(
-              title: Text('Done'),
-            ),
+          navigateToWidget: 'login',
+          image: Image.asset(
+            'assets/fondo.png',
+            fit: BoxFit.cover,
           ),
-          // image: Image.asset(
-          //   'assets/fondo.png',
-          //   fit: BoxFit.cover,
-          // ),
           backgroundColor: Colors.white,
           styleTextUnderTheLoader: TextStyle(
               fontSize: 14.0,
@@ -74,11 +71,10 @@ class _LoaddingPageState extends State<LoaddingPage> {
 }
 
 class TimeMessages {
-  static Future timer(MessageState state) async {
+  static Future timer(BuildContext context, MessageState state) async {
     while (true) {
       await Future.delayed(Duration(seconds: 5), () {
         //state.setMessage = DateTime.now().toIso8601String();
-        state.setMessage = 'Se termino el tiempo';
       });
     }
   }
